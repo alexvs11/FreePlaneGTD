@@ -2,8 +2,9 @@ import freeplaneGTD.DoneMover
 import freeplaneGTD.GTDMapReader
 import org.freeplane.core.util.TextUtils
 import org.freeplane.plugin.script.proxy.Proxy
+import groovy.transform.*
 
-// @ExecutionModes({on_single_node="main_menu_scripting/Freeplane GTD/week review"})
+// @ExecutionModes({on_single_node="main_menu_scripting/Freeplane GTD/freeplaneGTD[addons.reviewWeek]"})
 /*
 =========================================================
  Freeplane GTD+
@@ -26,11 +27,10 @@ import org.freeplane.plugin.script.proxy.Proxy
 =========================================================
 */
 
-import freeplaneGTD.DoneMover
-
 def reviewTask = new DoneMover()
-Proxy.Node targetNode = reviewTask.findOrCreateTargetDir(node, "Review Week")
-Proxy.Node reviewNode = reviewTask.findOrCreateTargetDir(node, TextUtils.getText("freeplaneGTD.config.reviewDirName"))
-Proxy.Node archiveNode = reviewTask.findOrCreateTargetDir(node, TextUtils.getText("freeplaneGTD.config.archiveDirName"))
-reviewTask.execute(targetNode, reviewNode, {node -> node != archiveNode})
+def (reviewWeekNode, reviewNode, archiveNode) = ["freeplaneGTD.config.reviewWeekDirName", "freeplaneGTD.config.reviewDirName", "freeplaneGTD.config.archiveDirName"].stream().map({
+    reviewTask.findOrCreateTargetDir(node, TextUtils.getText(it))
+}).collect()
+
+reviewTask.execute(reviewWeekNode, reviewNode, {node -> node != archiveNode})
 

@@ -3,7 +3,7 @@
 <node TEXT="Freeplane|GTD+" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1495901093576" LINK="http://www.itworks.hu/freeplanegtd-release/" BACKGROUND_COLOR="#97c7dc">
 <font SIZE="16" BOLD="true" ITALIC="true"/>
 <hook NAME="MapStyle">
-    <properties fit_to_viewport="false;" show_icon_for_attributes="true" show_note_icons="true"/>
+    <properties show_icon_for_attributes="true" fit_to_viewport="false;" show_note_icons="true"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -276,7 +276,7 @@
   </body>
 </html>
 </richcontent>
-<node TEXT="en" ID="ID_590286510" CREATED="1323057303773" MODIFIED="1515428032737">
+<node TEXT="en" ID="ID_590286510" CREATED="1323057303773" MODIFIED="1515432925808">
 <attribute_layout NAME_WIDTH="200.99999400973337 pt" VALUE_WIDTH="164.99999508261695 pt"/>
 <attribute NAME="main_menu_scripting/freeplaneGTD" VALUE="FreeplaneGTD"/>
 <attribute NAME="addons.${name}" VALUE="FreeplaneGTD"/>
@@ -285,6 +285,7 @@
 <attribute NAME="addons.${name}.editAction" VALUE="Edit action"/>
 <attribute NAME="addons.${name}.archiveTask" VALUE="Move completed to archive"/>
 <attribute NAME="addons.${name}.reviewTask" VALUE="Move completed to review"/>
+<attribute NAME="addons.${name}.reviewWeek" VALUE="Move reviewed daily tasks to week review"/>
 <attribute NAME="addons.${name}.fillTaskProject" VALUE="Initially fill a task"/>
 <attribute NAME="addons.${name}.setDoneTaskProject" VALUE="set done/not done/canceled"/>
 <attribute NAME="OptionPanel.separator.freeplaneGTD" VALUE="freeplaneGTD addon"/>
@@ -649,7 +650,7 @@
 <edge COLOR="#999999"/>
 </node>
 </node>
-<node TEXT="deinstall" POSITION="left" ID="ID_1357879524" CREATED="1323057303788" MODIFIED="1515428440946">
+<node TEXT="deinstall" POSITION="left" ID="ID_1357879524" CREATED="1323057303788" MODIFIED="1515432989348">
 <edge COLOR="#999999" WIDTH="3"/>
 <richcontent TYPE="NOTE">
 
@@ -664,7 +665,7 @@
   </body>
 </html>
 </richcontent>
-<attribute_layout NAME_WIDTH="33.74999899417165 pt" VALUE_WIDTH="271.4999919086697 pt"/>
+<attribute_layout NAME_WIDTH="33.74999899417165 pt" VALUE_WIDTH="327.7499902322891 pt"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}.script.xml"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}/scripts/FreeplaneGTD.groovy"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}/scripts/FreeplaneShorthand.groovy"/>
@@ -864,9 +865,9 @@
 <attribute NAME="execute_scripts_without_network_restriction" VALUE="false"/>
 <node TEXT="import freeplaneGTD.DoneMover&#xd;&#xa;import freeplaneGTD.GTDMapReader&#xd;&#xa;import org.freeplane.core.util.TextUtils&#xd;&#xa;import org.freeplane.plugin.script.proxy.Proxy&#xd;&#xa;&#xd;&#xa;// @ExecutionModes({on_single_node=&quot;main_menu_scripting/freeplaneGTD[addons.archiveTask]&quot;})&#xd;&#xa;/*&#xd;&#xa;=========================================================&#xd;&#xa; Freeplane GTD+&#xd;&#xa;&#xd;&#xa; Copyright (c)2016 Gergely Papp&#xd;&#xa;&#xd;&#xa; This program is free software: you can redistribute it and/or modify&#xd;&#xa; it under the terms of the GNU General Public License as published by&#xd;&#xa; the Free Software Foundation, either version 3 of the License, or&#xd;&#xa; any later version.&#xd;&#xa;&#xd;&#xa; This program is distributed in the hope that it will be useful,&#xd;&#xa; but WITHOUT ANY WARRANTY; without even the implied warranty of&#xd;&#xa; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xd;&#xa; GNU General Public License for more details.&#xd;&#xa;&#xd;&#xa; You should have received a copy of the GNU General Public License&#xd;&#xa; along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.&#xd;&#xa;&#xd;&#xa;=========================================================&#xd;&#xa;*/&#xd;&#xa;&#xd;&#xa;class ReviewTask extends DoneMover {&#xd;&#xa;&#xd;&#xa;    public Proxy.Node findOrCreateReviewDir(Proxy.Node node){&#xd;&#xa;        final Proxy.Node rootNode = node.map.root&#xd;&#xa;        final String reviewDirName = TextUtils.getText(&quot;freeplaneGTD.config.reviewDirName&quot;)&#xd;&#xa;&#xd;&#xa;        Proxy.Node archiveNode = rootNode.children.find {&#xd;&#xa;            it.transformedText==reviewDirName&#xd;&#xa;        }&#xd;&#xa;        if(!archiveNode) {&#xd;&#xa;            archiveNode = rootNode.createChild()&#xd;&#xa;            archiveNode.text=reviewDirName&#xd;&#xa;        }&#xd;&#xa;        return archiveNode&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;}&#xd;&#xa;&#xd;&#xa;ReviewTask reviewTask = new ReviewTask()&#xd;&#xa;reviewTask.execute(reviewTask.findOrCreateReviewDir(node), node)&#xd;&#xa;&#xd;&#xa;" ID="ID_284128976" CREATED="1495901105018" MODIFIED="1495901105018"/>
 </node>
-<node TEXT="GTDArchiveTask.groovy" FOLDED="true" ID="ID_1222024407" CREATED="1453634472702" MODIFIED="1514947274321">
-<attribute_layout NAME_WIDTH="163.49999512732043 pt" VALUE_WIDTH="149.24999555200353 pt"/>
-<attribute NAME="menuTitleKey" VALUE="addons.${name}.archiveTask"/>
+<node TEXT="GTDReviewWeek.groovy" FOLDED="true" ID="ID_1792599476" CREATED="1453634472702" MODIFIED="1515432825147">
+<attribute_layout NAME_WIDTH="163.49999512732043 pt" VALUE_WIDTH="193.4999942332508 pt"/>
+<attribute NAME="menuTitleKey" VALUE="addons.${name}.reviewWeek"/>
 <attribute NAME="menuLocation" VALUE="main_menu_scripting/${name}"/>
 <attribute NAME="executionMode" VALUE="on_single_node"/>
 <attribute NAME="keyboardShortcut" VALUE="F6"/>
@@ -875,11 +876,11 @@
 <attribute NAME="execute_scripts_without_write_restriction" VALUE="false"/>
 <attribute NAME="execute_scripts_without_exec_restriction" VALUE="false"/>
 <attribute NAME="execute_scripts_without_network_restriction" VALUE="false"/>
-<node TEXT="import freeplaneGTD.DoneMover&#xd;&#xa;import freeplaneGTD.GTDMapReader&#xd;&#xa;import org.freeplane.core.ui.components.UITools&#xd;&#xa;import org.freeplane.core.util.TextUtils&#xd;&#xa;import org.freeplane.plugin.script.proxy.Proxy&#xd;&#xa;&#xd;&#xa;// @ExecutionModes({on_single_node=&quot;main_menu_scripting/freeplaneGTD[addons.archiveTask]&quot;})&#xd;&#xa;/*&#xd;&#xa;=========================================================&#xd;&#xa; Freeplane GTD+&#xd;&#xa;&#xd;&#xa; Copyright (c)2016 Gergely Papp&#xd;&#xa;&#xd;&#xa; This program is free software: you can redistribute it and/or modify&#xd;&#xa; it under the terms of the GNU General Public License as published by&#xd;&#xa; the Free Software Foundation, either version 3 of the License, or&#xd;&#xa; any later version.&#xd;&#xa;&#xd;&#xa; This program is distributed in the hope that it will be useful,&#xd;&#xa; but WITHOUT ANY WARRANTY; without even the implied warranty of&#xd;&#xa; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xd;&#xa; GNU General Public License for more details.&#xd;&#xa;&#xd;&#xa; You should have received a copy of the GNU General Public License&#xd;&#xa; along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.&#xd;&#xa;&#xd;&#xa;=========================================================&#xd;&#xa;*/&#xd;&#xa;&#xd;&#xa;class ArchiveTask extends DoneMover {&#xd;&#xa;&#xd;&#xa;    public Proxy.Node findOrCreateArchiveDir (Proxy.Node node){&#xd;&#xa;        final Proxy.Node rootNode = node.map.root&#xd;&#xa;        final String archiveDirName = TextUtils.getText(&quot;freeplaneGTD.config.archiveDirName&quot;)&#xd;&#xa;&#xd;&#xa;        Proxy.Node archiveNode = rootNode.children.find {&#xd;&#xa;            it.transformedText==archiveDirName&#xd;&#xa;        }&#xd;&#xa;        if(!archiveNode) {&#xd;&#xa;            archiveNode = rootNode.createChild()&#xd;&#xa;            archiveNode.text=archiveDirName&#xd;&#xa;        }&#xd;&#xa;        return archiveNode&#xd;&#xa;    }&#xd;&#xa;}&#xd;&#xa;&#xd;&#xa;ArchiveTask archiveTask = new ArchiveTask()&#xd;&#xa;archiveTask.execute(archiveTask.findOrCreateArchiveDir(node), node)&#xd;&#xa;&#xd;&#xa;" ID="ID_651229738" CREATED="1495901105018" MODIFIED="1514947274326"/>
+<node TEXT="import freeplaneGTD.DoneMover&#xd;&#xa;import freeplaneGTD.GTDMapReader&#xd;&#xa;import org.freeplane.core.util.TextUtils&#xd;&#xa;import org.freeplane.plugin.script.proxy.Proxy&#xd;&#xa;&#xd;&#xa;// @ExecutionModes({on_single_node=&quot;main_menu_scripting/freeplaneGTD[addons.archiveTask]&quot;})&#xd;&#xa;/*&#xd;&#xa;=========================================================&#xd;&#xa; Freeplane GTD+&#xd;&#xa;&#xd;&#xa; Copyright (c)2016 Gergely Papp&#xd;&#xa;&#xd;&#xa; This program is free software: you can redistribute it and/or modify&#xd;&#xa; it under the terms of the GNU General Public License as published by&#xd;&#xa; the Free Software Foundation, either version 3 of the License, or&#xd;&#xa; any later version.&#xd;&#xa;&#xd;&#xa; This program is distributed in the hope that it will be useful,&#xd;&#xa; but WITHOUT ANY WARRANTY; without even the implied warranty of&#xd;&#xa; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xd;&#xa; GNU General Public License for more details.&#xd;&#xa;&#xd;&#xa; You should have received a copy of the GNU General Public License&#xd;&#xa; along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.&#xd;&#xa;&#xd;&#xa;=========================================================&#xd;&#xa;*/&#xd;&#xa;&#xd;&#xa;class ReviewTask extends DoneMover {&#xd;&#xa;&#xd;&#xa;    public Proxy.Node findOrCreateReviewDir(Proxy.Node node){&#xd;&#xa;        final Proxy.Node rootNode = node.map.root&#xd;&#xa;        final String reviewDirName = TextUtils.getText(&quot;freeplaneGTD.config.reviewDirName&quot;)&#xd;&#xa;&#xd;&#xa;        Proxy.Node archiveNode = rootNode.children.find {&#xd;&#xa;            it.transformedText==reviewDirName&#xd;&#xa;        }&#xd;&#xa;        if(!archiveNode) {&#xd;&#xa;            archiveNode = rootNode.createChild()&#xd;&#xa;            archiveNode.text=reviewDirName&#xd;&#xa;        }&#xd;&#xa;        return archiveNode&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;}&#xd;&#xa;&#xd;&#xa;ReviewTask reviewTask = new ReviewTask()&#xd;&#xa;reviewTask.execute(reviewTask.findOrCreateReviewDir(node), node)&#xd;&#xa;&#xd;&#xa;" ID="ID_264537663" CREATED="1495901105018" MODIFIED="1495901105018"/>
 </node>
-<node TEXT="GTDFillTaskProject.groovy" FOLDED="true" ID="ID_1211039032" CREATED="1453634472702" MODIFIED="1514956196814">
-<attribute_layout NAME_WIDTH="122.2499963566662 pt" VALUE_WIDTH="209.9999937415125 pt"/>
-<attribute NAME="menuTitleKey" VALUE="addons.${name}.fillTaskProject"/>
+<node TEXT="GTDArchiveTask.groovy" FOLDED="true" ID="ID_1222024407" CREATED="1453634472702" MODIFIED="1515432834446">
+<attribute_layout NAME_WIDTH="163.49999512732043 pt" VALUE_WIDTH="149.24999555200353 pt"/>
+<attribute NAME="menuTitleKey" VALUE="addons.${name}.archiveTask"/>
 <attribute NAME="menuLocation" VALUE="main_menu_scripting/${name}"/>
 <attribute NAME="executionMode" VALUE="on_single_node"/>
 <attribute NAME="keyboardShortcut" VALUE="F7"/>
@@ -888,14 +889,27 @@
 <attribute NAME="execute_scripts_without_write_restriction" VALUE="false"/>
 <attribute NAME="execute_scripts_without_exec_restriction" VALUE="false"/>
 <attribute NAME="execute_scripts_without_network_restriction" VALUE="false"/>
+<node TEXT="import freeplaneGTD.DoneMover&#xd;&#xa;import freeplaneGTD.GTDMapReader&#xd;&#xa;import org.freeplane.core.ui.components.UITools&#xd;&#xa;import org.freeplane.core.util.TextUtils&#xd;&#xa;import org.freeplane.plugin.script.proxy.Proxy&#xd;&#xa;&#xd;&#xa;// @ExecutionModes({on_single_node=&quot;main_menu_scripting/freeplaneGTD[addons.archiveTask]&quot;})&#xd;&#xa;/*&#xd;&#xa;=========================================================&#xd;&#xa; Freeplane GTD+&#xd;&#xa;&#xd;&#xa; Copyright (c)2016 Gergely Papp&#xd;&#xa;&#xd;&#xa; This program is free software: you can redistribute it and/or modify&#xd;&#xa; it under the terms of the GNU General Public License as published by&#xd;&#xa; the Free Software Foundation, either version 3 of the License, or&#xd;&#xa; any later version.&#xd;&#xa;&#xd;&#xa; This program is distributed in the hope that it will be useful,&#xd;&#xa; but WITHOUT ANY WARRANTY; without even the implied warranty of&#xd;&#xa; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xd;&#xa; GNU General Public License for more details.&#xd;&#xa;&#xd;&#xa; You should have received a copy of the GNU General Public License&#xd;&#xa; along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.&#xd;&#xa;&#xd;&#xa;=========================================================&#xd;&#xa;*/&#xd;&#xa;&#xd;&#xa;class ArchiveTask extends DoneMover {&#xd;&#xa;&#xd;&#xa;    public Proxy.Node findOrCreateArchiveDir (Proxy.Node node){&#xd;&#xa;        final Proxy.Node rootNode = node.map.root&#xd;&#xa;        final String archiveDirName = TextUtils.getText(&quot;freeplaneGTD.config.archiveDirName&quot;)&#xd;&#xa;&#xd;&#xa;        Proxy.Node archiveNode = rootNode.children.find {&#xd;&#xa;            it.transformedText==archiveDirName&#xd;&#xa;        }&#xd;&#xa;        if(!archiveNode) {&#xd;&#xa;            archiveNode = rootNode.createChild()&#xd;&#xa;            archiveNode.text=archiveDirName&#xd;&#xa;        }&#xd;&#xa;        return archiveNode&#xd;&#xa;    }&#xd;&#xa;}&#xd;&#xa;&#xd;&#xa;ArchiveTask archiveTask = new ArchiveTask()&#xd;&#xa;archiveTask.execute(archiveTask.findOrCreateArchiveDir(node), node)&#xd;&#xa;&#xd;&#xa;" ID="ID_651229738" CREATED="1495901105018" MODIFIED="1514947274326"/>
+</node>
+<node TEXT="GTDFillTaskProject.groovy" FOLDED="true" ID="ID_1211039032" CREATED="1453634472702" MODIFIED="1515432841866">
+<attribute_layout NAME_WIDTH="122.2499963566662 pt" VALUE_WIDTH="209.9999937415125 pt"/>
+<attribute NAME="menuTitleKey" VALUE="addons.${name}.fillTaskProject"/>
+<attribute NAME="menuLocation" VALUE="main_menu_scripting/${name}"/>
+<attribute NAME="executionMode" VALUE="on_single_node"/>
+<attribute NAME="keyboardShortcut" VALUE="F8"/>
+<attribute NAME="execute_scripts_without_asking" VALUE="true"/>
+<attribute NAME="execute_scripts_without_file_restriction" VALUE="true"/>
+<attribute NAME="execute_scripts_without_write_restriction" VALUE="false"/>
+<attribute NAME="execute_scripts_without_exec_restriction" VALUE="false"/>
+<attribute NAME="execute_scripts_without_network_restriction" VALUE="false"/>
 <node TEXT="// @ExecutionModes({on_single_node=&quot;main_menu_scripting/freeplaneGTD[addons.fillTaskProject]&quot;})&#xa;//=========================================================&#xa;// Freeplane GTD+&#xa;//&#xa;// Copyright (c)2018 Alex Petrov&#xa;//&#xa;// This program is free software: you can redistribute it and/or modify&#xa;// it under the terms of the GNU General Public License as published by&#xa;// the Free Software Foundation, either version 3 of the License, or&#xa;// any later version.&#xa;//&#xa;// This program is distributed in the hope that it will be useful,&#xa;// but WITHOUT ANY WARRANTY; without even the implied warranty of&#xa;// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&#xa;// GNU General Public License for more details.&#xa;//&#xa;// You should have received a copy of the GNU General Public License&#xa;// along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.&#xa;//&#xa;//=========================================================&#xa;&#xa;import freeplaneGTD.NodeState&#xa;ns = new NodeState(node)&#xa;ns.fillNextStateNew(node)" ID="ID_1402717812" CREATED="1495901105018" MODIFIED="1514962350916"/>
 </node>
-<node TEXT="GTDSetDoneTaskProject.groovy" FOLDED="true" ID="ID_700326563" CREATED="1453634472702" MODIFIED="1514962285918">
+<node TEXT="GTDSetDoneTaskProject.groovy" FOLDED="true" ID="ID_700326563" CREATED="1453634472702" MODIFIED="1515432846121">
 <attribute_layout NAME_WIDTH="122.2499963566662 pt" VALUE_WIDTH="209.9999937415125 pt"/>
 <attribute NAME="menuTitleKey" VALUE="addons.${name}.setDoneTaskProject"/>
 <attribute NAME="menuLocation" VALUE="main_menu_scripting/${name}"/>
 <attribute NAME="executionMode" VALUE="on_single_node"/>
-<attribute NAME="keyboardShortcut" VALUE="F8"/>
+<attribute NAME="keyboardShortcut" VALUE="F9"/>
 <attribute NAME="execute_scripts_without_asking" VALUE="true"/>
 <attribute NAME="execute_scripts_without_file_restriction" VALUE="true"/>
 <attribute NAME="execute_scripts_without_write_restriction" VALUE="false"/>
