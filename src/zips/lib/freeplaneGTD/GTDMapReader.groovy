@@ -47,7 +47,7 @@ class GTDMapReader {
     public String iconCancel
 	public Date today
     public Map contextIcons
-    private String laterText = "Later" // FIXME
+    private String laterText = TextUtils.getText("freeplaneGTD.view.when.later")
 
     static GTDMapReader getInstance() {
 		instance.today=new Date().clearTime()

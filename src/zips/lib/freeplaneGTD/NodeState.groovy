@@ -12,7 +12,7 @@ class NodeState {
         ILLEGAL,     // some other combination
         NONE,        // nothing
         TASK_LATER,  // !
-        //TASK_WEEK,   // !week - TBD add later
+        TASK_WEEK,   // !week - TBD add later
         TASK_TODAY,  // !*
         PROJECT      // project
     }
@@ -31,6 +31,7 @@ class NodeState {
         r.findIcons(root)
         this.StateIconsNew =  [(STATE_NEW.NONE):[],
                                (STATE_NEW.TASK_TODAY):[r.iconNextAction, r.iconToday],
+                               (STATE_NEW.TASK_WEEK) :[r.iconNextAction, r.iconWeek],
                                (STATE_NEW.TASK_LATER):[r.iconNextAction],
                                (STATE_NEW.PROJECT):[r.iconProject]]
         this.StateIconsDone = [(STATE_DONE.NOT_DONE):null,
@@ -61,8 +62,8 @@ class NodeState {
     STATE_NEW getNextStateNew(STATE_NEW state) {
         switch (state) {
         case STATE_NEW.NONE:       return STATE_NEW.TASK_LATER
-        case STATE_NEW.TASK_LATER: return STATE_NEW.TASK_TODAY
-        // TBD: add week
+        case STATE_NEW.TASK_LATER: return STATE_NEW.TASK_WEEK
+        case STATE_NEW.TASK_WEEK:  return STATE_NEW.TASK_TODAY
         case STATE_NEW.TASK_TODAY: return STATE_NEW.PROJECT
         case STATE_NEW.PROJECT:    return STATE_NEW.TASK_LATER
         case STATE_NEW.ILLEGAL:    return STATE_NEW.TASK_LATER

@@ -209,7 +209,7 @@
 <edge COLOR="#999999"/>
 </node>
 </node>
-<node TEXT="preferences.xml" POSITION="left" ID="ID_800601165" CREATED="1323057303742" MODIFIED="1456082248445">
+<node TEXT="preferences.xml" FOLDED="true" POSITION="left" ID="ID_800601165" CREATED="1323057303742" MODIFIED="1515427711178">
 <edge COLOR="#999999" WIDTH="3"/>
 <richcontent TYPE="NOTE">
 
@@ -227,7 +227,7 @@
   </body>
 </html>
 </richcontent>
-<node TEXT="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xa;&lt;preferences_structure&gt;&#xa;         &lt;tabbed_pane&gt;&#xa;                  &lt;tab name=&quot;plugins&quot;&gt;&#xa;                           &lt;separator name=&quot;freeplaneGTD&quot;&gt;&#xa;                &lt;boolean name=&quot;freeplaneGTD_filter_done&quot; min=&quot;0&quot; /&gt;&#xa;                &lt;combo name=&quot;freeplaneGTD_default_view&quot;&gt;&#xa;                    &lt;choice value=&quot;PROJECT&quot; text=&quot;freeplaneGTD_view_project&quot; /&gt;&#xa;                    &lt;choice value=&quot;WHO&quot; text=&quot;freeplaneGTD_view_who&quot; /&gt;&#xa;                    &lt;choice value=&quot;CONTEXT&quot; text=&quot;freeplaneGTD_view_context&quot; /&gt;&#xa;                    &lt;choice value=&quot;WHEN&quot; text=&quot;freeplaneGTD_view_when&quot; /&gt;&#xa;                &lt;/combo&gt;&#xa;                &lt;boolean name=&quot;freeplaneGTD_auto_fold_map&quot; min=&quot;0&quot; /&gt;&#xa;                &lt;boolean name=&quot;freeplaneGTD_remember_last_position&quot; min=&quot;0&quot; /&gt;&#xa;                           &lt;/separator&gt;&#xa;                  &lt;/tab&gt;&#xa;         &lt;/tabbed_pane&gt;&#xa;&lt;/preferences_structure&gt;" ID="ID_561768128" CREATED="1413235874574" MODIFIED="1480965679776"/>
+<node TEXT="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xa;&lt;preferences_structure&gt;&#xa;         &lt;tabbed_pane&gt;&#xa;                  &lt;tab name=&quot;plugins&quot;&gt;&#xa;                           &lt;separator name=&quot;freeplaneGTD&quot;&gt;&#xa;                &lt;boolean name=&quot;freeplaneGTD_filter_done&quot; min=&quot;0&quot; /&gt;&#xa;                &lt;combo name=&quot;freeplaneGTD_default_view&quot;&gt;&#xa;                    &lt;choice value=&quot;PROJECT&quot; text=&quot;freeplaneGTD_view_project&quot; /&gt;&#xa;                    &lt;choice value=&quot;WHO&quot; text=&quot;freeplaneGTD_view_who&quot; /&gt;&#xa;                    &lt;choice value=&quot;CONTEXT&quot; text=&quot;freeplaneGTD_view_context&quot; /&gt;&#xa;                    &lt;choice value=&quot;WHEN&quot; text=&quot;freeplaneGTD_view_when&quot; /&gt;&#xa;                &lt;/combo&gt;&#xa;                &lt;boolean name=&quot;freeplaneGTD_auto_fold_map&quot; min=&quot;0&quot; /&gt;&#xa;                &lt;boolean name=&quot;freeplaneGTD_remember_last_position&quot; min=&quot;0&quot; /&gt;&#xa;                           &lt;/separator&gt;&#xa;                  &lt;/tab&gt;&#xa;         &lt;/tabbed_pane&gt;&#xa;&lt;/preferences_structure&gt;" ID="ID_561768128" CREATED="1413235874574" MODIFIED="1515427711170"/>
 </node>
 <node TEXT="default.properties" POSITION="left" ID="ID_680880217" CREATED="1323057303742" MODIFIED="1490362003848">
 <edge COLOR="#999999" WIDTH="3"/>
@@ -276,8 +276,8 @@
   </body>
 </html>
 </richcontent>
-<node TEXT="en" ID="ID_590286510" CREATED="1323057303773" MODIFIED="1514962322137">
-<attribute_layout NAME_WIDTH="155.99999535083785 pt" VALUE_WIDTH="164.99999508261695 pt"/>
+<node TEXT="en" ID="ID_590286510" CREATED="1323057303773" MODIFIED="1515428032737">
+<attribute_layout NAME_WIDTH="200.99999400973337 pt" VALUE_WIDTH="164.99999508261695 pt"/>
 <attribute NAME="main_menu_scripting/freeplaneGTD" VALUE="FreeplaneGTD"/>
 <attribute NAME="addons.${name}" VALUE="FreeplaneGTD"/>
 <attribute NAME="addons.${name}.listActions" VALUE="Next action list"/>
@@ -316,6 +316,7 @@
 <attribute NAME="freeplaneGTD.view.context.unassigned" VALUE="Unassigned"/>
 <attribute NAME="freeplaneGTD.view.when.today" VALUE="Today"/>
 <attribute NAME="freeplaneGTD.view.when.this_week" VALUE="This week"/>
+<attribute NAME="freeplaneGTD.view.when.later" VALUE="Later"/>
 <attribute NAME="freeplaneGTD.actioneditor.title" VALUE="Edit action"/>
 <attribute NAME="freeplaneGTD.actioneditor.action" VALUE="Action"/>
 <attribute NAME="freeplaneGTD.actioneditor.delegate" VALUE="Who"/>
@@ -329,6 +330,7 @@
 <attribute NAME="freeplaneGTD.message.copy_ok" VALUE="Selection copied to clipboard."/>
 <attribute NAME="freeplaneGTD.config.archiveDirName" VALUE="Archives"/>
 <attribute NAME="freeplaneGTD.config.reviewDirName" VALUE="Review"/>
+<attribute NAME="freeplaneGTD.config.reviewWeekDirName" VALUE="Review Week"/>
 <attribute NAME="freeplaneGTD_remember_last_position" VALUE="Remember last position"/>
 <edge COLOR="#999999"/>
 </node>
@@ -647,7 +649,7 @@
 <edge COLOR="#999999"/>
 </node>
 </node>
-<node TEXT="deinstall" POSITION="left" ID="ID_1357879524" CREATED="1323057303788" MODIFIED="1514956276171">
+<node TEXT="deinstall" POSITION="left" ID="ID_1357879524" CREATED="1323057303788" MODIFIED="1515428440946">
 <edge COLOR="#999999" WIDTH="3"/>
 <richcontent TYPE="NOTE">
 
@@ -668,6 +670,7 @@
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}/scripts/FreeplaneShorthand.groovy"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}/scripts/GTDActionEditor.groovy"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}/scripts/GTDFillTaskProject.groovy"/>
+<attribute NAME="delete" VALUE="${installationbase}/addons/${name}/scripts/GTDSetDoneTaskProject.groovy"/>
 <attribute NAME="delete" VALUE="${installationbase}/addons/${name}/lib/flying-saucer-core-9.0.8.jar"/>
 <attribute NAME="delete" VALUE="${installationbase}/templates/GTD_template.mm"/>
 <attribute NAME="delete" VALUE="${installationbase}/lib/freeplaneGTD/DateUtil.groovy"/>
@@ -675,6 +678,7 @@
 <attribute NAME="delete" VALUE="${installationbase}/lib/freeplaneGTD/ReportModel.groovy"/>
 <attribute NAME="delete" VALUE="${installationbase}/lib/freeplaneGTD/GTDMapReader.groovy"/>
 <attribute NAME="delete" VALUE="${installationbase}/lib/freeplaneGTD/Tag.groovy"/>
+<attribute NAME="delete" VALUE="${installationbase}/lib/freeplaneGTD/NodeState.groovy"/>
 <attribute NAME="delete" VALUE="${installationbase}/icons/fpgtdIcon.png"/>
 <attribute NAME="delete" VALUE="${installationbase}/resources/images/freeplaneGTD.png"/>
 <attribute NAME="delete" VALUE="${installationbase}/resources/images/freeplaneGTD-icon.png"/>
@@ -949,7 +953,7 @@
 <node TEXT="UEsDBBQACAgIAGGXd0oAAAAAAAAAAAAAAAAZAAAAdGVtcGxhdGVzL0dURF90ZW1wbGF0ZS5tbc&#xa;VZbW/juBH+XqD/gdUB3RZNbL1YL74mi2ZtZ2M0iReJF71tUQS0RFm8yKJBUvH5fv0NSVl2bGWd&#xa;FyPrLDaSRXEeDp+ZeYY5meE5eiBcUFacWiknZJ7jgiCn5bVs6+Of/3Tyl+PjMUMPlCyQzKhAKc&#xa;3JEUrYosgZTpB6Bc1okSCYaU6LKRIslQvMCTqvZ0s5m6FMyvnP7XZtoyVYyWOSMj4lrYJIdHys&#xa;7BUsIWg8+GV8al0tkcTiXljoctQ7uxz+d9C/ux1/uxzc3QzOT62zUrIZljS+xEtWylZOHkje4o&#xa;xJCw37p9awf+eEruf6fuA7FurdDM7GA/jecSPP7npeZPu+Z6GrUX94PtQPOr4XdLph4IedQC+e&#xa;xqxAn74OL8fD61NLLRNWabXVo4yxe3R9djUAnHh+K5c5Ua/AExhyJ9S9UOP0lV7UehFmeWaMBn&#xa;ynBljPGj7nJCEpLUhioS+j2+F4OAJonE4zuWcCeA2XOTjn6uyXu/8M++OLUyuwbfDM6HJ0c2r9&#xa;ZOuPhbSPTy0s7uawj4WZN2WFrNbbwzmdcAoDYXZwG7zyaXQJDkxxLgg4fwx2e6tb7S2STMlq3g&#xa;n5nRJuoQoCsKowg9o19mctRA9oJURimgszwzPfKZgkL3ohBa5LILe1vZaMJuROfWGmi3NWJrU/&#xa;U1v9gJsuzr7A2JvR1+s+ULc3blrucxdf0aAUhB+/kgjVFJLNabzefSeKutGk3n2Iy/vtjb+kE8&#xa;LBERAUt7gQuwSQvCQv28sKiygnW3Di2PM2yPjucHYRBUG3a9vvB4LO5oxLXMXf41S0JOIAJNrK&#xa;oC/l0fcS8HZO+XTW+/dnEwF1eJA0Djtrf1aOi17mrEYQR84mAs9L0x0zwSHMuJtmJh2vu2Omcw&#xa;gz3tqMouAmCSsz7iHMdDaSgf7smLH3k27r7nExbKuquVU9aywDSKM9ljOuYHy9Hg8ASGgMchpn&#xa;wH8JxQiNv6lk2h+Mz4aXt1XJzeQshyuETjKCE32FkL5v11+cTFiyrB6dzKsLhC4YyB+QNqBiGC&#xa;RVVN9SSWYgdxhHGcnnrerFtnnzpF3NBgaMbXW5AXNLytyyGUnw8vgKLyfkJXpGMXkdlTlJN8SN&#xa;44Wh44ShvyluOm7oun7XjdzIbhI3duC7TkNGiTHsWoL5Rr2uAzW1bYigPTuBLob9/uC6Snhv3p&#xa;exEpvwDyNOYjabATgCcpPlCewPLfQWfR730YzIjCVHcI8lDAV5JACbMMoRgSPRnAk5ZyBDQb7p&#xa;ginz5dZ2PrL8nUffYLoYF0CVB6IRaCtHaM7ZryQGqxkB4VsKpYM1pYxiRCKDTB6XEoYCnxZUZi&#xa;jheIow6OaEs1exq72KsQ2anUrym/wqQQ+1pkSO4eZvH2rBDd5qwfspnbYwjzP6QPqUX+MZ+fD3&#xa;QzHSDqJO2A2iJkZ68GlmpN11uw2MNHvdwEfFxh/Dx4p+yiCmhdjIE4poC6jVSDKUq+QGbMyxJP&#xa;yVTBvDzED7eU4k0N6QWTGvFCXO8yWaECC7omHSQsP0kfl72G8kOY7vEUsNvCo8Foqd61lhNwuE&#xa;UwCp38c5Bx8sYV7V7SmrGZkd6UfKMnAo1qSfaZa/MYJUqlXeW0UGOg8UdhNYerUqNmAE5QBIzC&#xa;G6gLCPA+1QUdPTQfFEDDwWy08QPwrCjgtE93Z4DwQ37ecW730buk9oNa0ddoexrvA/KNsWiM2V&#xa;mMX5iuywK0IyII7ymECLDDAhk0hRxhZ6F9etPiSZfwBVyimk6Ay2EHyHVFiLV/JlCO/+jL6Ybf&#xa;/rT05g//Pt/x/radXK6oIBdabi1l4wY6DnoZC8DKEKjL3w+lDq3hvY40y1F+I1FCaEY8WzV1iD&#xa;5MGn6mqPrb0w/nVCP/6vN7pWWeD/J2368fnLLVShfZskrDD0wHWlVOchqyIauY7r2JHn7iYT33&#xa;H8YKuI6geBHTphk6ybgaxzKtXekPoqEGSGaV4j8ILI85xIGdoB4Lmu0pu7ABzPDpuq+JWaeZ/9&#xa;K0L08cqGtA26HWjcOg0QgjDwoiYIAM4JGyBMOSvnezFcgESvAQSe79mRa4e79gNI3lGz/a7td5&#xa;rss0zN/RhAI5Jiwn57vRYzPfuGD72uF0ZesCvGItfvdJrOPgP46fgNayAJlU+0Bu9erLSbVLVa&#xa;aLkN7oCOICHYaAZ1uCfQlLU24/hJ2QH9HXhVBXhV0oz4YKbBgFlemWA0RGWx0oqoIIsjVBZxjj&#xa;lN6UrTVcJMaSyJ74k+V0ewEMGY/g0glojFcclbdY1WwFLKhTSSLNtpiaCQxUS8tuJuu2qnh1nr&#xa;tHWXrA/41WbAMyo/iE3NZnTEocRaJQVe9EeB74aJCxnVd0J7V7v5XafT7XYaw8R3GrtoUEj3IB&#xa;XvYLcbo0XFyw+Jlrpl0dHyACRkJUSJyoxCtQmqGj9QSUHqrtSWaTig0SiIgNJ+pKNLAKhYllz1&#xa;HecbnaUyICAIuQrCpTrTn64llSF5Zvi8SQ3TjpbV+SkWgsUUKxmhW2QqX0nhURET07foaFsqza&#xa;CIqoLEZAvlE9PaAK3LPKm6GyrVELySvmWRVIdBq77jEOcGGJwOntRATLZpPjBQsfbeBwOm9zvA&#xa;ucB2LQojaHe6DaWoC4+i3f5IxZjXXIoURvX3yidOBn5M71QxpmLTKuk/Ph9Yq2QVSat23bj8TY&#xa;cFN3oKiDxIwJD4YcVU928cfSZSCSuFsZgKKC8FOarriu7qOXuAsAUUkrM6LgGW3D2AOHjL72+3&#xa;/DkDrDr2Tee/yh911jFFRq3MuO1N8dHePKWG338AUEsHCA0jO6MkCAAADR8AAFBLAQIUABQACA&#xa;gIAGGXd0oNIzujJAgAAA0fAAAZAAAAAAAAAAAAAAAAAAAAAAB0ZW1wbGF0ZXMvR1REX3RlbXBs&#xa;YXRlLm1tUEsFBgAAAAABAAEARwAAAGsIAAAAAA==" ID="ID_1760453889" CREATED="1495901105034" MODIFIED="1495901105034"/>
 </node>
 </node>
-<node TEXT="images" FOLDED="true" POSITION="right" ID="ID_907142452" CREATED="1323172874273" MODIFIED="1456082250782"><richcontent TYPE="NOTE">
+<node TEXT="images" POSITION="right" ID="ID_907142452" CREATED="1323172874273" MODIFIED="1456082250782"><richcontent TYPE="NOTE">
 
 <html>
   <head>
